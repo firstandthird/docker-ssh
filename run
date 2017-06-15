@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+if [[ -n "$PRIVATE_SSH_KEY" ]]; then
+  mkdir -p $HOME/.ssh
+  echo -e $PRIVATE_SSH_KEY >> $HOME/.ssh/id_rsa
+  chmod 600 $HOME/.ssh/id_rsa
+fi
+
+ssh -o "StrictHostKeyChecking no" $@
